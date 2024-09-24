@@ -1,5 +1,5 @@
-WEEK 3
-1. Write the README
+### WEEK 3
+## 1. Write the README
 
 % scp ~/Downloads/Bioinformatic/bacterial_dataset.zip quezadgc@ilogin.ibex.kaust.edu.sa:~/
 quezadgc@ilogin.ibex.kaust.edu.sa's password: 
@@ -7,7 +7,7 @@ bacterial_dataset.zip                                  100%   16MB  14.0MB/s   0
 
  % ssh quezadgc@ilogin.ibex.kaust.edu.sa
 
-2. Uncompress the zip file on IBEX
+## 2. Uncompress the zip file on IBEX
 [quezadgc@login509-02-r ~]$ ls
 bacterial_dataset.zip  Ecoli_first10.fna  genomes   README.md
 ecoli-10-lines.fna     ecoli.fna          in_class
@@ -50,10 +50,10 @@ replace README.md? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
   inflating: md5sum.txt              
 [quezadgc@login509-02-r ~]$ 
 
-3. 
+##3. 
 ## PRINT THE LARGEST GENOME
 [quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | tail -n 1 | awk '{print "The largest genome is in \"" $2 "\": " $1}'
-## THIS CODE WILL SCAN ALL THE .fna FILES IN THE GIVEN DIRECTORY. Exec IS TO EXECUTE THE COMMAND IN EACH FILE. tail IS TO COUNT THE NUMBER OF CHARACTERS IN EACH FILE EXCLUDING THE FIRST LINE WHICH IS THE TITLE. Sort TO ORDER THE FILES AND FIND THE ONE WHICH LARGEST NUMBER OF CHARACTERS. echo IS TO PRINT THE OUTPUT (FILE NAME AND NUMBER OF CHARACTERS IN GENOME). 
+#### THIS CODE WILL SCAN ALL THE .fna FILES IN THE GIVEN DIRECTORY. Exec IS TO EXECUTE THE COMMAND IN EACH FILE. tail IS TO COUNT THE NUMBER OF CHARACTERS IN EACH FILE EXCLUDING THE FIRST LINE WHICH IS THE TITLE. Sort TO ORDER THE FILES AND FIND THE ONE WHICH LARGEST NUMBER OF CHARACTERS. echo IS TO PRINT THE OUTPUT (FILE NAME AND NUMBER OF CHARACTERS IN GENOME). 
 
 OUTPUT: The largest genome is in "GCF_000006745.1_ASM674v1_genomic.fna": 4083974
 
