@@ -50,7 +50,7 @@ replace README.md? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
   inflating: md5sum.txt              
 [quezadgc@login509-02-r ~]$ 
 
-##3. 
+## 3. 
 ## PRINT THE LARGEST GENOME
 [quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | tail -n 1 | awk '{print "The largest genome is in \"" $2 "\": " $1}'
 #### THIS CODE WILL SCAN ALL THE .fna FILES IN THE GIVEN DIRECTORY. Exec IS TO EXECUTE THE COMMAND IN EACH FILE. tail IS TO COUNT THE NUMBER OF CHARACTERS IN EACH FILE EXCLUDING THE FIRST LINE WHICH IS THE TITLE. Sort TO ORDER THE FILES AND FIND THE ONE WHICH LARGEST NUMBER OF CHARACTERS. echo IS TO PRINT THE OUTPUT (FILE NAME AND NUMBER OF CHARACTERS IN GENOME). 
@@ -60,17 +60,17 @@ OUTPUT: The largest genome is in "GCF_000006745.1_ASM674v1_genomic.fna": 4083974
 
 ## PRINT THE SMALLEST GENOME
 [quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | head -n 1 | awk '{print "The smallest genome is in \"" $2 "\": " $1}'
-## THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE tail. tail WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE GENOME. 
+#### THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE tail. tail WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE GENOME. 
  
 OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 1055551
 
 
-4. 
+## 4. 
 
 ## FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME
 
 [quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
-## grep IS TO SHOW A COUNT OF MATCHES.
+#### grep IS TO SHOW A COUNT OF MATCHES.
 OUTPUT: 14
 
 ## FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME BUT WITHOUT THE WORD “COCCUS”
@@ -79,7 +79,7 @@ OUTPUT: 14
 OUTPUT: 4
 
 
-5. 
+## 5. 
 ## FIND THE NUMBER OF FILES LARGER THAN 3MB (-size  Finds files larger than 3MB and wc -l: Counts the number of lines in the output, giving you the total number of files found.)
 
 [quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -size +3M | wc -l
