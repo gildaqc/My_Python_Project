@@ -75,7 +75,7 @@ git add gene_finder_filter.py
 git commit -m "added gene_finder_filter.py"
 ```
 ## Problem 6: Implementing gene finder with length, rbs site and rbs type filter
-We need to run the code of "GeneFinderFilter.py" to filter all predicted ORFs based on whether they contain a Shine-Dalgarno sequence  (AGGAGG) up to 20bp upstream of the start codon.
+We need to run the code of "GeneFinderRBS.py" to filter all predicted ORFs based on whether they contain a Shine-Dalgarno sequence  (AGGAGG) up to 20bp upstream of the start codon.
 
 ```bash
 touch gene_finder_rbs.py
