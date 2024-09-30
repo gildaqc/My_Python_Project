@@ -1,87 +1,86 @@
-# WEEK 3 & 4
+### WEEK 3
+## 1. Write the README
 
-## Step 1: Initialize BioPython
-```bash
-ssh quezadgc@ilogin.ibex.kaust.edu.sa
-pip install biopython
-```
+% scp ~/Downloads/Bioinformatic/bacterial_dataset.zip quezadgc@ilogin.ibex.kaust.edu.sa:~/
+quezadgc@ilogin.ibex.kaust.edu.sa's password: 
+bacterial_dataset.zip                                  100%   16MB  14.0MB/s   00:01    
 
-## Step 2: Create Git Repository
-```bash
-mkdir Week4
-cd Week4/
-git init
-touch gene_finder.py README.md
-nano gene_finder.py 
-```
-## Problem 1: Finding reading frames
-We need to run the code of "GeneFinder.py" to find the open reading frames and I used the file "test1.fasta" to test the code.
+ % ssh quezadgc@ilogin.ibex.kaust.edu.sa
 
-```bash
-python gene_finder.py test1.fasta
-```
-OUTPUT:
-``` bash
->ORF_0_12
-ATGCGTACGTAG
->ORF_27_93
-ATGATGCTAGCTAACGTAGCTAGCTATACGATCGATGACGTAGCTGATGCTGGTACGATATCGTAG
->ORF_30_93
-ATGCTAGCTAACGTAGCTAGCTATACGATCGATGACGTAGCTGATGCTGGTACGATATCGTAG
->ORF_19_31
-ATGCGTAAATGA
->ORF_61_70
-ATGACGTAG
->ORF_73_97
-```
+## 2. Uncompress the zip file on IBEX
+[quezadgc@login509-02-r ~]$ ls
+bacterial_dataset.zip  Ecoli_first10.fna  genomes   README.md
+ecoli-10-lines.fna     ecoli.fna          in_class
 
-## Problem 2: Finding reading frames including the reverse complements
-We need to run the code of "GeneFinderRvCom.py" to find the open reading frames and I used the file "test1.fasta" to test the code.
+[quezadgc@login509-02-r ~]$ unzip bacterial_dataset.zip 
+Archive:  bacterial_dataset.zip
+replace README.md? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: README.md               
+  inflating: ncbi_dataset/data/data_summary.tsv  
+  inflating: ncbi_dataset/data/assembly_data_report.jsonl  
+  inflating: ncbi_dataset/data/GCA_000008525.1/GCA_000008525.1_ASM852v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008605.1/GCA_000008605.1_ASM860v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008625.1/GCA_000008625.1_ASM862v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008745.1/GCA_000008745.1_ASM874v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000027305.1/GCA_000027305.1_ASM2730v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008525.1/GCF_000008525.1_ASM852v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008605.1/GCF_000008605.1_ASM860v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008625.1/GCF_000008625.1_ASM862v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008745.1/GCF_000008745.1_ASM874v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000027305.1/GCF_000027305.1_ASM2730v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000006745.1/GCA_000006745.1_ASM674v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008545.1/GCA_000008545.1_ASM854v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008565.1/GCA_000008565.1_ASM856v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008725.1/GCA_000008725.1_ASM872v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000008785.1/GCA_000008785.1_ASM878v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000006745.1/GCF_000006745.1_ASM674v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008545.1/GCF_000008545.1_ASM854v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008565.1/GCF_000008565.1_ASM856v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008725.1/GCF_000008725.1_ASM872v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000008785.1/GCF_000008785.1_ASM878v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000006825.1/GCA_000006825.1_ASM682v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000006865.1/GCA_000006865.1_ASM686v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000007125.1/GCA_000007125.1_ASM712v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCA_000091085.2/GCA_000091085.2_ASM9108v2_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000006825.1/GCF_000006825.1_ASM682v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000006865.1/GCF_000006865.1_ASM686v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000007125.1/GCF_000007125.1_ASM712v1_genomic.fna  
+  inflating: ncbi_dataset/data/GCF_000091085.2/GCF_000091085.2_ASM9108v2_genomic.fna  
+  inflating: ncbi_dataset/data/dataset_catalog.json  
+  inflating: md5sum.txt              
+[quezadgc@login509-02-r ~]$ 
 
-```bash
-touch gene_finder_RvCom.py
-nano gene_finder_RvCom.py 
-python gene_finder_RvCom.py test1.fasta 
-```
-OUTPUT:
-``` bash
->ORF_0_12
-ATGCGTACGTAG
->ORF_27_93
-ATGATGCTAGCTAACGTAGCTAGCTATACGATCGATGACGTAGCTGATGCTGGTACGATATCGTAG
->ORF_30_93
-ATGCTAGCTAACGTAGCTAGCTATACGATCGATGACGTAGCTGATGCTGGTACGATATCGTAG
->ORF_19_31
-ATGCGTAAATGA
->ORF_61_70
-ATGACGTAG
->ORF_73_97
-```
-## Problem 4: Finding reading frames including the reverse complements and applying code to all 14 downloaded genomes 
+## 3. 
+## PRINT THE LARGEST GENOME
+[quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | tail -n 1 | awk '{print "The largest genome is in \"" $2 "\": " $1}'
+#### THIS CODE WILL SCAN ALL THE .fna FILES IN THE GIVEN DIRECTORY. Exec IS TO EXECUTE THE COMMAND IN EACH FILE. tail IS TO COUNT THE NUMBER OF CHARACTERS IN EACH FILE EXCLUDING THE FIRST LINE WHICH IS THE TITLE. Sort TO ORDER THE FILES AND FIND THE ONE WHICH LARGEST NUMBER OF CHARACTERS. echo IS TO PRINT THE OUTPUT (FILE NAME AND NUMBER OF CHARACTERS IN GENOME). 
 
-```bash
-find /home/quezadgc/ncbi_dataset/data -type f -name "*GCF*.fna" | while read genome; do python gene_finder_RvCom.py "$genome"; done > all_orfs.txt
-```
-OUTPUT: all_orfs.txt (Text file containing all the open reading frames for the 14 downloaded genomes)
+OUTPUT: The largest genome is in "GCF_000006745.1_ASM674v1_genomic.fna": 4083974
 
-## Problem 5: Implementing gene finder with length filter
-We need to run the code of "GeneFinderFilter.py" to implement a filter by length that discards short ORFs that are unlikely to be functional genes (e.g., less than 100 codon)
 
-```bash
-touch genefinder_filtered.py
-nano genefinder_filtered.py
-python gene_finder_filter.py all_orfs.txt -l 100 > gfind_filter_output.fasta
-git add gene_finder_filter.py
-git commit -m "added gene_finder_filter.py"
-```
-## Problem 6: Implementing gene finder with length, rbs site and rbs type filter
-We need to run the code of "GeneFinderRBS.py" to filter all predicted ORFs based on whether they contain a Shine-Dalgarno sequence  (AGGAGG) up to 20bp upstream of the start codon.
+## PRINT THE SMALLEST GENOME
+[quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | head -n 1 | awk '{print "The smallest genome is in \"" $2 "\": " $1}'
+#### THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE tail. tail WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE GENOME. 
+ 
+OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 1055551
 
-```bash
-touch gene_finder_rbs.py
-nano gene_finder_rbs.py 
-python gene_finder_rbs.py gfind_filter_output.fasta -l 100 -u 20 -r AGGAGG > ORFs_RBS_OUTPUT.fasta
-git add gene_finder_rbs.py 
-git commit -m "added gene_finder_rbs.py"
-```
 
+## 4. 
+
+## FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME
+
+[quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+#### grep IS TO SHOW A COUNT OF MATCHES.
+OUTPUT: 14
+
+## FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME BUT WITHOUT THE WORD “COCCUS”
+
+[quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | grep -v "coccus" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+OUTPUT: 4
+
+
+## 5. 
+## FIND THE NUMBER OF FILES LARGER THAN 3MB (-size  Finds files larger than 3MB and wc -l: Counts the number of lines in the output, giving you the total number of files found.)
+
+[quezadgc@login509-02-r data]$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -size +3M | wc -l
+OUTPUT: 6
