@@ -21,7 +21,7 @@ OUTPUT: The largest genome is in "GCF_000006745.1_ASM674v1_genomic.fna": 4083974
 
 ### PRINT THE SMALLEST GENOME
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | head -n 1 | awk '{print "The smallest genome is in \"" $2 "\": " $1}'
+$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | head -n 1 | awk '{print "The smallest genome is in \"" $2 "\": " $1}'
 ```
 THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE head THAT WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE LIST. 
  
@@ -32,23 +32,23 @@ OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 105555
 
 ### FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
 ```
 grep IS TO SEARCH SOMETHING.
 
-OUTPUT: 14
+OUTPUT: 7
 
 ### FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME BUT WITHOUT THE WORD “COCCUS”
 
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | grep -v "coccus" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | grep -v "coccus" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
 ```
-OUTPUT: 4
+OUTPUT: 2
 
 
 ## 5. FIND THE NUMBER OF FILES LARGER THAN 3MB (-size  Finds files larger than 3MB and wc -l: Counts the number of lines in the output, giving you the total number of files found.)
 
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -size +3M | wc -l
+$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -size +3M | wc -l
 ```
-OUTPUT: 6
+OUTPUT: 3
