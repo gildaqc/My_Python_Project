@@ -23,7 +23,7 @@ OUTPUT: The largest genome is in "GCF_000006745.1_ASM674v1_genomic.fna": 4083974
 ``` bash
 $ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'echo "$(tail -n +2 "$1" | wc -c) $(basename "$1")"' _ {} \; | sort -n | head -n 1 | awk '{print "The smallest genome is in \"" $2 "\": " $1}'
 ```
-THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE tail. tail WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE GENOME. 
+THIS CODE WILL DO THE SAME AS THE ONE BEFORE WITH THE DIFFERENCE THAT NOW I USE THE head THAT WILL GIVE ME THE SMALLEST VALUE OF THE CHARACTERS IN THE LIST. 
  
 OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 1055551
 
