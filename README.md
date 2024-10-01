@@ -32,18 +32,16 @@ OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 105555
 
 ### FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+$ grep -E 'GCA' /home/quezadgc/ncbi_dataset/data/data_summary.tsv | grep -E 'c.*c' | wc -l
 ```
-grep IS TO SEARCH SOMETHING.
-
 OUTPUT: 7
 
 ### FIND THE NUMBER OF GENOMES WITH AT LEAST TWO “C” IN THE SPECIES NAME BUT WITHOUT THE WORD “COCCUS”
 
 ``` bash
-$ find /home/quezadgc/ncbi_dataset/data -type f -name "*GCA*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | grep -v "coccus" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
+grep -E 'GCA' /home/quezadgc/ncbi_dataset/data/data_summary.tsv | grep -E 'c.*c' | grep -v 'coccus' | wc -l
 ```
-OUTPUT: 2
+OUTPUT: 5
 
 
 ## 5. FIND THE NUMBER OF FILES LARGER THAN 3MB (-size  Finds files larger than 3MB and wc -l: Counts the number of lines in the output, giving you the total number of files found.)
