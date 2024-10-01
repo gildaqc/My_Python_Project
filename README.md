@@ -34,7 +34,7 @@ OUTPUT: The smallest genome is in "GCA_000008725.1_ASM872v1_genomic.fna": 105555
 ``` bash
 $ find /home/quezadgc/ncbi_dataset/data -type f -name "*.fna" -exec sh -c 'grep -E "^>" "$1" | awk -F " " "{print \$2}" | grep -E "c.*c" | wc -l' _ {} \; | awk '{total += $1} END {print total}'
 ```
-grep IS TO SHOW A COUNT OF MATCHES.
+grep IS TO SEARCH SOMETHING.
 
 OUTPUT: 14
 
